@@ -81,7 +81,7 @@ export default function Register() {
             )}
             <div className='flex gap-[10px]'>
                 <span className='text-black'>Already have a account?</span>
-                <Link href="/user//login" className='text-blue-700'>
+                <Link href="/user/login" className='text-blue-700'>
                     LogIn
                 </Link>
             </div>
