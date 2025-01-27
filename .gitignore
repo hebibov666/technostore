@@ -16,6 +16,10 @@
 # next.js
 /.next/
 /out/
+/pages/api/addproduct
+/pages/api/addtocart
+/pages/api/category
+/pages/api/createuser
  
 
 

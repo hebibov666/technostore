@@ -4,7 +4,7 @@ export const getProducts = createAsyncThunk(
   'categories/getProducts',
   async (categoryName = null, { rejectWithValue }) => {
     try {
-      const response = await axios.get('http://localhost:3001/products', {
+      const response = await axios.get('https://technostore-1.onrender.com/products', {
         params: categoryName ? { categoryName } : {},
       });
       return response.data;

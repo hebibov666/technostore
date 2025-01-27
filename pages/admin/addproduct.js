@@ -32,7 +32,7 @@ export default function AddProduct(){
           formData.append('file', file);
         }
         try {
-          await axios.post('http://localhost:3001/addproduct', formData, {
+          await axios.post('https://technostore-1.onrender.com/addproduct', formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },

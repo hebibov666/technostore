@@ -40,7 +40,7 @@ export async function getServerSideProps(context) {
 
   try {
 
-    const response = await axios.get(`http://localhost:3001/products/${id}`);
+    const response = await axios.get(`https://technostore-1.onrender.com/products/${id}`);
     const product = await response.data;
 
     if (!product) {

@@ -16,7 +16,7 @@ export default function Register() {
     const handleSendOtp = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:3001/api/send-otp', { name, phone });
+            const response = await axios.post('https://technostore-1.onrender.com/api/send-otp', { name, phone });
             console.log(response.data.message);
             setStep(2);
         } catch (err) {
@@ -27,7 +27,7 @@ export default function Register() {
     const handleVerifyOtp = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:3001/api/verify-otp', { phone, otp, name, password });
+            const response = await axios.post('https://technostore-1.onrender.com/api/verify-otp', { phone, otp, name, password });
         } catch (err) {
             console.error('Error:', err.response?.data?.message);
         }

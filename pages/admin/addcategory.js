@@ -29,7 +29,7 @@ const AddCategory = () => {
       formData.append('file', file);
     }
     try {
-      await axios.post('http://localhost:3001/categories', formData, {
+      await axios.post('https://technostore-1.onrender.com/categories', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

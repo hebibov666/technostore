@@ -4,7 +4,7 @@ export const getCategories = createAsyncThunk(
     'categories/getCategories',
     async (_, { rejectWithValue }) => {
       try {
-        const response = await axios.get('http://localhost:3001/categories');
+        const response = await axios.get('https://technostore-1.onrender.com/categories');
         return response.data;
       } catch (error) {
         return rejectWithValue(

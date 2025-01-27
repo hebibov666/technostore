@@ -18,7 +18,7 @@ export default function MyBasket() {
         const fetchCartProducts = async () => {
             if (userId) {
                 try {
-                    const res = await axios.get(`http://localhost:3001/cart/${userId}`);
+                    const res = await axios.get(`https://technostore-1.onrender.com/cart/${userId}`);
                     const products = res.data?.cart?.products; 
                     setCartsProducts(products);
                 } catch (error) {
@@ -47,7 +47,7 @@ export default function MyBasket() {
 
     const removeProduct=async(id)=>{
 try{
-const res=await axios.delete("http://localhost:3001/removefromcart",
+const res=await axios.delete("https://technostore-1.onrender.com/removefromcart",
 {  data: {
     userId: userId,
     productId: id,
