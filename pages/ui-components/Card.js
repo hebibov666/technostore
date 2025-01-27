@@ -27,22 +27,23 @@ toast.success('The product added to the cart');
    }
   }
     return (
-        <Link href={`/product/${product._id}`} className="w-full flex  flex-col gap-[10px] h-[320px] bg-white rounded-[7px]">
+        <Link href={`/product/${product?._id}`} className="w-full flex  flex-col gap-[10px] h-[320px] bg-white rounded-[7px]">
         <div className="w-full h-[50%] flex justify-center items-center pt-[10px]">
           <img
-            src={product.file}
-            alt={product.name}
+            src={product?.file}
+            alt={product?.name}
             className="w-full h-full  rounded-[5px]"
           />
         </div>
         <div className="flex flex-col gap-[10px] p-[10px]">
-          <h1 className="text-lg font-semibold truncate text-black">{product.name}</h1>
+          <h1 className="text-lg font-semibold truncate text-black">{product?.name}</h1>
         
-         <span className="text-md font-medium text-black font-bold">{product.price} $</span>
+         <span className="text-md font-medium text-black font-bold">{product?.price} $</span>
       
          
-          <Button text="Add to cart" onClick={(e)=>{addToCart(e,product._id)}}/>
+          <Button text="Add to cart" onClick={(e)=>{addToCart(e,product?._id)}}/>
         </div>
       </Link>
+
     );
   }
