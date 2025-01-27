@@ -6,7 +6,7 @@ import FormContainer from '../ui-components/FormContainer';
 import Button from '../ui-components/Button';
 import Select from '../ui-components/Select';
 import { useSelector, useDispatch } from "react-redux";
-import { getCategories } from "../redux/slice";
+import { getCategories } from '@/redux/slice';
 import { toast } from 'react-hot-toast';
 const AddCategory = () => {
   const [name, setName] = useState('');

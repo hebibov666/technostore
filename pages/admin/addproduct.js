@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { getCategories } from "../redux/slice";
+import { getCategories } from '@/redux/slice';
 import axios from 'axios';
 import Input from '../ui-components/Input';
 import FormContainer from '../ui-components/FormContainer';
