@@ -2,7 +2,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Link from 'next/link';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import { useDispatch} from 'react-redux';
-import { openSidebar,openBasket } from '../redux/slice';
+import { openSidebar,openBasket } from '@/redux/slice';
 import { useSession } from 'next-auth/react';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 export default function Header(){

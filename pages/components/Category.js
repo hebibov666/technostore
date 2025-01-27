@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { getCategories,openSidebar } from "../redux/slice";
+import { getCategories,openSidebar } from "@/redux/slice";
 import CloseIcon from '@mui/icons-material/Close';
-import { getProducts } from "../redux/productSlice";
+import { getProducts } from "@/redux/productSlice";
 import CircularProgress from '@mui/material/CircularProgress';
 export default function Category() {
   const [activeCategoryId, setActiveCategoryId] = useState(null);

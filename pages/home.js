@@ -1,5 +1,5 @@
 import Header from './components/Header';
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 import Products from './components/Products';
 import Category from "./components/Category"
 import MyBasket from "./components/MyBasket";

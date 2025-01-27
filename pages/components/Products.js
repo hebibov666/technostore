@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from '../redux/productSlice';
+import { getProducts } from '@/redux/productSlice';
 import Card from '../ui-components/Card';
 import CardSkeleton from '../ui-components/CardSkeleton';
 

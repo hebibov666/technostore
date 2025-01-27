@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import { useSelector, useDispatch } from "react-redux";
-import { openBasket } from "../redux/slice";
+import { openBasket } from "@/redux/slice";
 import Button from "../ui-components/Button";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
