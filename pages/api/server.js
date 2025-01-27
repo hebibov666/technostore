@@ -31,7 +31,6 @@ const CreateUser=require("./createuser/UserModel")
 const AddCategory=require("./category/CategoryModel")
 const AddProduct=require("./addproduct/ProductModel")
 const AddToCart=require("./addtocart/CartModel")
-app.use('/', AddStore);
 app.use("/",CreateUser)
 app.use("/",AddCategory)
 app.use("/",AddProduct)
