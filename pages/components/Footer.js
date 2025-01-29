@@ -1,6 +1,6 @@
 export default function Footer(){
     return (
-        <div className="w-full bg-[#212121] pt-[50px] p-[30px] h-auto flex justify-start gap-[50px]">
+        <div className="w-full flex-wrap bg-[#212121] pt-[50px] p-[30px] h-auto flex justify-start gap-[50px]">
         <div className="flex flex-col items-start gap-[5px] ">
         <h1 className="font-bold text-[#F6F7FA] underline">About us</h1>
             <a href="#" className="text-white">Contact us</a>

@@ -5,6 +5,7 @@ import Category from "./components/Category"
 import MyBasket from "./components/MyBasket";
 import MySlider from './components/Slider';
 import Footer from './components/Footer';
+import SearchProduct from './components/SearchProduct';
 
 
 export default function HomePage(){
@@ -12,6 +13,7 @@ export default function HomePage(){
     return(
         <div className='bg-[#F6F7FA] min-h-[100vh] h-auto'>
 <Header/>
+<SearchProduct/>
 <MySlider/>
 {sidebar&& <Category/>}
 {basket && <MyBasket/>}

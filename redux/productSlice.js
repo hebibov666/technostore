@@ -1,5 +1,6 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios"
+
 export const getProducts = createAsyncThunk(
   'categories/getProducts',
   async (categoryName = null, { rejectWithValue }) => {
@@ -19,6 +20,7 @@ export const getProducts = createAsyncThunk(
 
 const initialState={
     products:[],
+    defaultProducts:[],
     loading:true,
     error:false,
 }
@@ -26,7 +28,16 @@ const initialState={
 export const productSlice=createSlice({
     name:"product",
     initialState,
-    reducers:{
+    reducers: {
+      searchProduct: (state, action) => {
+        if (!action.payload.value || action.payload.value.trim() === "") {
+          state.products =state.defaultProducts
+        } else {
+          state.products = state.defaultProducts.filter(product => 
+            product.name.toLowerCase().startsWith(action.payload.value.toLowerCase())
+          );
+        }
+      }
     },
     extraReducers:(builder) => {
             builder
@@ -37,6 +48,7 @@ export const productSlice=createSlice({
               .addCase(getProducts.fulfilled, (state, action) => {
                 state.loading = false;
                 state.products = action.payload;
+                state.defaultProducts=action.payload
               })
               .addCase(getProducts.rejected, (state, action) => {
                 state.loading = false;
@@ -44,5 +56,5 @@ export const productSlice=createSlice({
               });
     }
 })
-export const {}=productSlice.actions;
+export const {searchProduct}=productSlice.actions;
 export default productSlice.reducer

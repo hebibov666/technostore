@@ -4,61 +4,25 @@ import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import { useSelector, useDispatch } from "react-redux";
 import { openBasket } from "@/redux/slice";
-import Button from "../ui-components/Button";
-import { toast } from "react-hot-toast";
 import Link from "next/link";
+import { removeProduct } from "@/functions/basketfunctions";
+import { totalPrice,fetchCartProducts } from "@/functions/basketfunctions";
 export default function MyBasket() {
     const [cartsProducts, setCartsProducts] = useState([]);
+    const [loading,setLoading]=useState(true)
     const { data: session } = useSession();
     const { basket } = useSelector((state) => state.categories);
     const [total,setTotal]=useState(0)
     const dispatch=useDispatch()
     const userId = session?.user?.id;
-    useEffect(() => {
-        const fetchCartProducts = async () => {
-            if (userId) {
-                try {
-                    const res = await axios.get(`https://technostore-1.onrender.com/cart/${userId}`);
-                    const products = res.data?.cart?.products; 
-                    setCartsProducts(products);
-                } catch (error) {
-                    console.error("Something went wrong", error);
-                }
-            }
-        };
 
-        fetchCartProducts();
+    useEffect(() => {
+    fetchCartProducts(userId,setCartsProducts,setLoading);
     }, [session]);
 
     useEffect(() => {
-        const TotalPrice = () => {
-           if(cartsProducts?.length>0){
-            const total= cartsProducts.reduce((sum, product) => {
-                return sum + product.price * product.quantity;
-            }, 0);
-            setTotal(total)
-           }else{
-            setTotal(0)
-           }
-        };
-
-        TotalPrice();
+      totalPrice(cartsProducts,setTotal);
     }, [cartsProducts]);
-
-    const removeProduct=async(id)=>{
-try{
-const res=await axios.delete("https://technostore-1.onrender.com/removefromcart",
-{  data: {
-    userId: userId,
-    productId: id,
-  },})
-  setCartsProducts(res.data.cart.products)
-toast.success("Product remove from basket")
-}
-catch(error){
-toast.error("Something went wrong")
-}
-    }
 
     return (
       <div className={`overflow-hidden w-full h-[100vh] ${basket ? "flex justify-end" : "hidden"} fixed top-0 right-0 z-[999] bg-[#0a0a0a51]`}>
@@ -88,23 +52,24 @@ toast.error("Something went wrong")
                             <p className="text-black">{product.quantity}</p>
                         </div>
                         <div className="flex items-center justify-center">
-                            <CloseIcon onClick={()=>{removeProduct(product.productId)}}/>
+                            <CloseIcon onClick={()=>{removeProduct(product.productId,userId,setCartsProducts)}}/>
                             </div>
                     </div>
                 ))
             ) : (
-                <p>Your baket is empty</p>
+                <p className="pt-[40px]">Your baket is empty</p>
             )
            }
+           <div className="w-full absolute bottom-0 left-0 bg-white h-auto flex items-center justify-center p-[10px]">
+<div className="h-[50px] hover:bg-[#6412b1]  flex justify-between items-center p-[10px] w-full bg-[#8A2BE2] rounded-[30px]">
+    <h1 className="text-white font-bold pl-[10px]">Checkout</h1>
+    <span className="flex items-center justify-center w-auto min-w-[70px] rounded-[20px] p-[5px] bg-white text-black font-bold">
+       {total + " $"}
+    </span>
+</div>
+</div>
         </div>
-        <div className="w-full absolute bottom-0 left-0 bg-white h-auto flex items-center justify-center p-[10px]">
-        <div className="h-[50px] hover:bg-[#6412b1]  flex justify-between items-center p-[10px] w-full bg-[#8A2BE2] rounded-[30px]">
-            <h1 className="text-white font-bold pl-[10px]">Checkout</h1>
-            <span className="flex items-center justify-center w-auto min-w-[70px] rounded-[20px] p-[5px] bg-white text-black font-bold">
-               {total + " $"}
-            </span>
-        </div>
-        </div>
+
        </div>
       </div>
     );

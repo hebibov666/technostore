@@ -3,9 +3,11 @@ import axios from "axios"
 import Button from '../ui-components/Button';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Image from 'next/image';
+import { addToCart } from '@/functions/basketfunctions';
+import { useSession } from 'next-auth/react';
 export default function ProductDetail({ product }) {
   const router = useRouter();
-
+const {data:session}=useSession()
 
  
 
@@ -28,7 +30,7 @@ export default function ProductDetail({ product }) {
           <h1 className="text-2xl font-bold">{product.name}</h1>
           <p className="mt-4 text-lg">{product.description}</p>
           <p className="mt-2 text-xl font-semibold">{product.price} $</p>
-          <Button text="Add to cart" />
+          <Button text="Add to cart" onClick={(e)=>{addToCart(e,product._id,1,session)}} />
         </div>
       </div>
     </div>

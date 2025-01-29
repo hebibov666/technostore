@@ -16,15 +16,11 @@
 # next.js
 /.next/
 /out/
-/pages/api/addproduct/ProductModel.js
-/pages/api/addproduct/ProductSchema.js
-/pages/api/addtocart/CartModel.js
-/pages/api/addtocart/CartSchema.js
-/pages/api/category/CategoryModel.js
-/pages/api/category/CategorySchema.js
-/pages/api/createuser/UserModel.js
-/pages/api/createuser/UserSchema.js
- 
+
+# pages
+pages/api/*
+!pages/api/auth/
+/pages/admin/
 
 
 # production

@@ -16,10 +16,10 @@ export default function MySlider() {
     autoplay:true
   }
   return (
- <div className="pt-[60px] h-auto p-[5px] overflow-hidden max-[600px]:max-w-[100vw]">
+ <div className="pt-[130px] h-auto p-[5px] overflow-hidden max-[600px]:max-w-[100vw]">
   <Slider {...settings}>
 {images.map((image,index)=>{
-  return <div className="w-full aspect-[16/5] rounded-[10px]  relative">
+  return <div key={index} className="w-full aspect-[16/5] rounded-[10px]  relative">
     <img src={image} alt="" key={index} className="w-full h-full object-cover rounded-[10px]"/>
   <div className="w-full h-full absolute top-0 left-0 bg-[#0a0a0a30] "></div>
   </div>
