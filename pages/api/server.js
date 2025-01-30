@@ -6,7 +6,7 @@ const app=express();
 const PORT=3001;
 
 app.use(cors({
-    origin: 'http://localhost:3000', 
+    origin: 'https://technostore-one.vercel.app', 
     credentials: true, 
 }));
 
