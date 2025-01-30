@@ -33,10 +33,12 @@ const CreateUser=require("./createuser/UserModel")
 const AddCategory=require("./category/CategoryModel")
 const AddProduct=require("./addproduct/ProductModel")
 const AddToCart=require("./addtocart/CartModel")
+const AuthRoutes=require("./auth")
 app.use("/",CreateUser)
 app.use("/",AddCategory)
 app.use("/",AddProduct)
 app.use("/",AddToCart)
+app.use("/",AuthRoutes)
 
 
 app.listen(PORT,()=>{

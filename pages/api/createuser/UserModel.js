@@ -103,7 +103,7 @@ router.post('/api/login', async (req, res) => {
             phone: user.phone,  
         });
     } catch (error) {
-        res.status(500).json({ message: 'Error' });
+        res.status(500).json({ message: 'Error',error });
     }
 });
 

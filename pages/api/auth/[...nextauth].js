@@ -58,14 +58,15 @@ export default NextAuth({
   },
   cookies: {
     sessionToken: {
-      name: "next-auth.session-token",  
+      name: "__Secure-next-auth.session-token",  
       options: {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",  
+        secure: true,
+        sameSite: "none",  
         path:"/",
-        domain: ".onrender.com",  
+        domain: ".technostore-one.vercel.app",  
       },
     },
-  }
+  },
+  secret:process.env.NEXTAUTH_SECRET,
 });
