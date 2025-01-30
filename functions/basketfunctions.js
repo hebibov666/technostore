@@ -53,16 +53,22 @@ export const totalPrice = (cartsProducts, setTotal) => {
   }
 };
 
-export const fetchCartProducts = async (userId,setCartsProducts,setLoading) => {
-  if (userId) {
+export const getCartProducts = async (userId, setCartsProducts, setLoading) => {
+  setLoading(true); 
 
-      try {
-          const res = await axios.get(`https://technostore-1.onrender.com/cart/${userId}`);
-          const products =res.data?.cart?.products; 
-          setCartsProducts(products);
-          setLoading(false)
-      } catch (error) {
-          console.error("Something went wrong", error);
-      }
+  if (!userId) {
+    setCartsProducts([]); 
+    setLoading(false); 
+    return;
+  }
+
+  try {
+    const res = await axios.get(`https://technostore-1.onrender.com/cart/${userId}`);
+    const products = res.data?.cart?.products || []; 
+    setCartsProducts(products);
+  } catch (error) {
+    console.error("Something went wrong", error);
+  } finally {
+    setLoading(false);
   }
 };
