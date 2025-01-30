@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export default NextAuth({
+  debug:true,
   providers: [
     CredentialsProvider({
       name: 'Credentials',  
@@ -62,9 +63,8 @@ export default NextAuth({
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "None",  
-        domain: ".vercel.app",  
+        domain: "technostore-1.onrender.com",  
       },
     },
-  },
-  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+  }
 });
