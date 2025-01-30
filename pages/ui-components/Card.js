@@ -14,7 +14,7 @@ export default function Card({ product }) {
     <Link href={`/product/${product?._id}`}
       className="relative w-full flex  flex-col gap-[10px] h-[320px] bg-white rounded-[7px]">
       <FavoriteIcon
-        onClick={(e) => { addFavorite(e, product._id, setFavoriteProducts) }}
+        onClick={(e) => { addFavorite(e, product?._id, setFavoriteProducts) }}
         className={`
         absolute 
         top-1 
@@ -23,7 +23,7 @@ export default function Card({ product }) {
         rounded-full
         w-[30px]
         h-[30px] 
-        p-1 ${favoriteProducts.includes(product._id) ? "text-red-600" : ""} `
+        p-1 ${favoriteProducts.includes(product?._id) ? "text-red-600" : ""} `
         } />
       <div className="
         w-full
