@@ -17,7 +17,7 @@ const {data:session}=useSession()
         <ArrowBackIcon onClick={() => { router.back() }} className='text-black' />
         <h1 className='text-black font-bold'>Product detail</h1>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+      <div className="grid grid-cols-1 lg:grid-cols-2 bg-[#F6F7FA]">
         <div className='p-[30px]'>
           <Image
             src={product.file}
