@@ -11,7 +11,7 @@ import SearchProduct from './components/SearchProduct';
 export default function HomePage(){
     const {sidebar,basket} = useSelector((state) => state.categories);
     return(
-        <div className='bg-[#F6F7FA] min-h-[100vh] h-auto'>
+        <div className='bg-[#F6F7FA]'>
 <Header/>
 <SearchProduct/>
 <MySlider/>
