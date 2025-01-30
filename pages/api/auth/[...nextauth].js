@@ -62,8 +62,9 @@ export default NextAuth({
       options: {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "None",  
-        domain: "technostore-1.onrender.com",  
+        sameSite: "lax",  
+        path:"/",
+        domain: ".onrender.com",  
       },
     },
   }
