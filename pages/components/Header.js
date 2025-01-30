@@ -19,7 +19,7 @@ export default function Header(){
            </div>
         <div className='flex gap-[10px] items-center'>
            <Link href="./components/FavoriteProducts">
-           <FavoriteBorderIcon fontSize='medium'/>
+           <FavoriteBorderIcon fontSize='medium' className='text-black'/>
            </Link>
           <ShoppingBasketIcon onClick={()=>{dispatch(openBasket())}} fontSize='medium' className='text-[#808080]'/>
        {session?.user? 

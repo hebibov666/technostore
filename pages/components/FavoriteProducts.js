@@ -14,7 +14,7 @@ export default function FavoriteProducts() {
   }, [dispatch]);
 
   
-  const favoriteProducts = products.filter(product => favorites.includes(product._id));
+  const favoriteProducts = products?.filter(product => favorites?.includes(product._id));
 
 
   return (

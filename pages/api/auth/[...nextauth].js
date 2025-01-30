@@ -54,5 +54,16 @@ export default NextAuth({
       session.user.name = token.name;
       return session;
     }
+  },
+  cookies: {
+    sessionToken: {
+      name: "next-auth.session-token",  // Çerezin adı
+      options: {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "None",  
+        domain: ".vercel.app",  
+      },
+    },
   }
 });
