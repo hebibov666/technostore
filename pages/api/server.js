@@ -8,7 +8,9 @@ const PORT=3001;
 app.use(cors({
     origin: 'https://technostore-one.vercel.app', 
     credentials: true, 
-}));
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'] 
+  }));
 
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));

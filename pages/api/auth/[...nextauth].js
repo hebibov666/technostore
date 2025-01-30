@@ -65,5 +65,6 @@ export default NextAuth({
         domain: ".vercel.app",  
       },
     },
-  }
+  },
+  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
 });
