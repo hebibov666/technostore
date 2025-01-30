@@ -46,14 +46,14 @@ export default function Category() {
         return (
           <div className="flex flex-col w-full p-[10px]" key={category._id}>
             <div onClick={()=>{setActiveCategoryId(category._id)}} className={`flex items-center justify-between w-full gap-[10px]  ${activeCategoryId===category._id ? "bg-[#F6F7FA]" : "bg-white"}  p-[10px] rounded-[5px]`}>
-              <p className="text-[1em] text-center truncate">{category.name}</p>
+              <p className="text-[1em] text-center truncate text-black">{category.name}</p>
              {activeCategoryId===category._id ? <CloseIcon onClick={(e)=>{closeCategory(e)}}/>  : <ArrowDropDownIcon /> }
             </div>
             {activeCategoryId===category._id && 
             categories.filter(subCat=>subCat.parent===category._id).map(subcat=>{
                 return <div onClick={()=>{filterProductsByCategory(subcat._id)}} className="flex flex-col w-full" key={subcat._id}>
                 <div className="flex items-center justify-start w-full gap-[10px] p-[10px]">
-                  <p className="text-[1em] text-center truncate hover:font-bold">{subcat.name}</p>
+                  <p className="text-[1em] text-black text-center truncate hover:font-bold">{subcat.name}</p>
                 </div>
               </div>
             })

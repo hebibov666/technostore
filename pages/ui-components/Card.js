@@ -23,7 +23,7 @@ export default function Card({ product }) {
         rounded-full
         w-[30px]
         h-[30px] 
-        p-1 ${favoriteProducts?.includes(product?._id) ? "text-red-600" : ""} `
+        p-1 ${favoriteProducts?.includes(product?._id) ? "text-red-600" : "text-black"} `
         } />
       <div className="
         w-full
