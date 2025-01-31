@@ -18,7 +18,7 @@ export default function FavoriteProducts() {
 
 
   return (
-    <div className='flex items-center flex-col w-full'>
+    <div className='flex items-center flex-col w-full gap-[20px]'>
         <div className='fixed top-0 left-0 z-[999] w-full flex p-[10px] items-center justify-start gap-[20px] h-[40px] bg-white border-b-[2px] border-[#F6F7FA]  '>
         <ArrowBackIcon onClick={() => { router.back() }} className='text-black' />
         <h1 className='text-black font-bold'>Favorites</h1>

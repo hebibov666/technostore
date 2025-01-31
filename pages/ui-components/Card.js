@@ -5,10 +5,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState } from "react";
 import { addToCart } from "@/functions/basketfunctions";
 import { addFavorite } from "@/functions/addfavoritefunction";
+import CircularProgress from '@mui/material/CircularProgress';
 export default function Card({ product }) {
   const { data: session } = useSession();
   const [favoriteProducts, setFavoriteProducts] = useState(typeof window != 'undefined' ? JSON.parse(localStorage.getItem("favorites")) : [])
-
+  const [adding,setAdding]=useState(false)
 
   return (
     <Link href={`/product/${product?._id}`}
@@ -45,8 +46,8 @@ export default function Card({ product }) {
 
         <span className="text-md font-medium text-black font-bold">{product?.price} $</span>
         <Button
-          text="Add to cart"
-          onClick={(e) => { addToCart(e, product?._id, session) }}
+          text={adding ? <CircularProgress size={30} className="text-white"/> : "Add to cart"}
+          onClick={(e) => { addToCart(e, product?._id, session,setAdding) }}
         />
       </div>
     </Link>

@@ -12,6 +12,7 @@ function Login() {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
+  const [error,setError]=useState(null)
   const router = useRouter()
 
   const loginProfile = async (e) => {
@@ -25,6 +26,7 @@ function Login() {
     setLoading(false)
     if (res?.error) {
       toast.error("Login unsuccessful")
+      setError(res?.error)
     } else {
       router.push("/")
     }
@@ -45,6 +47,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
+        {error && <p className="text-red-600">{error}</p>}
         <span className="font-bold text-black">Demo User:<br></br> Username: İsmayıl <br></br> Password: user1234</span>
         <Button
           type="submit"

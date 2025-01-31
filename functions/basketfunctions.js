@@ -2,20 +2,23 @@ import { toast } from "react-hot-toast"
 import axios from "axios"
 
 
-export const addToCart = async (e, productId, session) => {
+export const addToCart = async (e, productId, session,setAdding) => {
   e.preventDefault()
+  setAdding(true)
   if (session) {
     const payload = {
       userId: session.user.id,
       productId: productId,
       quantity: 1
     }
+   
     try {
       await axios.post("https://technostore-1.onrender.com/addtocart", payload)
+      setAdding(false)
       toast.success('The product added to the cart');
     }
     catch (error) {
-      console.log(error)
+     setAdding(false)
       toast.error('Product not added to he cart!');
     }
   } else {

@@ -65,7 +65,7 @@ export default function MyBasket() {
         <p className="text-black">{product.quantity}</p>
       </div>
       <div className="flex items-center justify-center">
-        <CloseIcon onClick={() => { removeProduct(product.productId, userId, setCartsProducts); }} />
+        <CloseIcon onClick={() => { removeProduct(product.productId, userId, setCartsProducts); }} className="text-black" />
       </div>
     </div>
   ))}
