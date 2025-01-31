@@ -1,10 +1,9 @@
-// pages/add-category.js
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Input from '../ui-components/Input';
-import FormContainer from '../ui-components/FormContainer';
-import Button from '../ui-components/Button';
-import Select from '../ui-components/Select';
+import Input from '@/ui-components/Input';
+import FormContainer from '@/ui-components/FormContainer';
+import Button from '@/ui-components/Button';
+import Select from '@/ui-components/Select';
 import { useSelector, useDispatch } from "react-redux";
 import { getCategories } from '@/redux/slice';
 import { toast } from 'react-hot-toast';
