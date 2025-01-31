@@ -4,14 +4,13 @@ import axios from "axios"
 
 export const addToCart = async (e, productId, session,setAdding) => {
   e.preventDefault()
-  setAdding(true)
   if (session) {
     const payload = {
       userId: session.user.id,
       productId: productId,
       quantity: 1
     }
-   
+    setAdding(true)
     try {
       await axios.post("https://technostore-1.onrender.com/addtocart", payload)
       setAdding(false)

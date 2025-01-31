@@ -38,8 +38,7 @@ const AddCategory = () => {
       setName('');
       setParent(null);
     } catch (error) {
-      console.error(error);
-    toast.error("Category dont added")
+       toast.error("Category dont added")
     }
   };
 

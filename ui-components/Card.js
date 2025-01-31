@@ -9,11 +9,22 @@ import CircularProgress from '@mui/material/CircularProgress';
 export default function Card({ product }) {
   const { data: session } = useSession();
   const [favoriteProducts, setFavoriteProducts] = useState(typeof window != 'undefined' ? JSON.parse(localStorage.getItem("favorites")) : [])
-  const [adding,setAdding]=useState(false)
+  const [adding, setAdding] = useState(false)
 
   return (
     <Link href={`/product/${product?._id}`}
-      className="relative w-full flex  flex-col gap-[10px] h-[320px] bg-white rounded-[7px]">
+      className="
+        relative 
+        w-full 
+        flex 
+        rounded-[5px] 
+        shadow-md 
+        shadow-[#f6f7fa] 
+        flex-col 
+        gap-[10px] 
+        h-[320px] 
+        bg-white 
+        rounded-[7px]">
       <FavoriteIcon
         onClick={(e) => { addFavorite(e, product?._id, setFavoriteProducts) }}
         className={`
@@ -46,8 +57,12 @@ export default function Card({ product }) {
 
         <span className="text-md font-medium text-black font-bold">{product?.price} $</span>
         <Button
-          text={adding ? <CircularProgress size={30} className="text-white"/> : "Add to cart"}
-          onClick={(e) => { addToCart(e, product?._id, session,setAdding) }}
+          text={adding
+            ?
+            <CircularProgress size={30} color="white" />
+            :
+            "Add to cart"}
+          onClick={(e) => { addToCart(e, product?._id, session, setAdding) }}
         />
       </div>
     </Link>

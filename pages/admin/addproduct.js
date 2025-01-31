@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { getCategories } from '@/redux/slice';
 import axios from 'axios';
-import Input from '../ui-components/Input';
-import FormContainer from '../ui-components/FormContainer';
-import Button from '../ui-components/Button';
-import Select from '../ui-components/Select';
+import Input from '@/ui-components/Input';
+import FormContainer from '@/ui-components/FormContainer';
+import Button from '@/ui-components/Button';
+import Select from '@/ui-components/Select';
 import { toast } from 'react-hot-toast';
 export default function AddProduct(){
     const [name, setName] = useState('');

@@ -6,7 +6,7 @@ import { openSidebar,openBasket } from '@/redux/slice';
 import { useSession } from 'next-auth/react';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-export default function Header(){
+export default function Header({setViewProfile}){
     const { data: session } = useSession();
     const dispatch=useDispatch()
 
@@ -18,13 +18,13 @@ export default function Header(){
             <h1 className='text-[#8A2BE2] text-[25px] font-bold'>TechnoStore</h1>
            </div>
         <div className='flex gap-[10px] items-center'>
-           <Link href="./components/FavoriteProducts">
-           <FavoriteBorderIcon fontSize='medium' className='text-black'/>
+           <Link href="./FavoriteProducts">
+           <FavoriteBorderIcon fontSize='medium' className='text-[#808080]'/>
            </Link>
           <ShoppingBasketIcon onClick={()=>{dispatch(openBasket())}} fontSize='medium' className='text-[#808080]'/>
        {session?.user? 
       
-        <img src='./user.png' className='w-[40px] h-[40px]'></img>
+        <img src='./user.png' className='w-[40px] h-[40px]' onClick={()=>{setViewProfile(true)}}></img>
     
        :
        <Link href="./user/login">

@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    phone: { type: String, required: true, unique: true },
+    phone: { type: Number, required: true, unique: true },
     password: { 
         type: String, 
         required: true, 
@@ -11,12 +11,5 @@ const userSchema = new mongoose.Schema({
     },
 });
 
-const otpSchema = new mongoose.Schema({
-    phone: { type: String, required: true },
-    otp: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now, index: { expires: 300 } },
-});
+module.exports = mongoose.model('User', userSchema);
 
-const User = mongoose.model('User',userSchema);
-const OTP = mongoose.model('OTP', otpSchema);
-module.exports = { User, OTP };

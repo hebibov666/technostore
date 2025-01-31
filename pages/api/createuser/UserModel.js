@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const { User, OTP } = require('./UserSchema'); 
+const User = require('./UserSchema'); 
 const router = express.Router();
 const twilio = require('twilio');
 const crypto = require('crypto');
@@ -11,55 +11,25 @@ const accountSid = process.env.ACCOUNTSID;
 const authToken = process.env.AUTHTOKEN;
 const client = twilio(accountSid, authToken);
 
-router.post('/api/send-otp', async (req, res) => {
-    const { name, phone } = req.body;
-
-    if (!name || !phone) {
-        return res.status(400).json({ message: 'Name and phone required' });
-    }
-
-    const otp = crypto.randomInt(100000, 999999).toString(); 
-
-    try {
-        await OTP.create({ phone, otp });
-        await client.messages.create({
-            body: `Your otp code: ${otp}`,
-            from: '+16086056378',
-            to: phone,
-        });
-
-        res.json({ message: 'OTP send!' });
-    } catch (error) {
-        res.status(500).json({ message: 'OTP dont send' });
-    }
-});
-
-router.post('/api/verify-otp', async (req, res) => {
-    const { name, phone, otp, password } = req.body;
-
-    if (!name || !phone || !otp || !password) {
-        return res.status(400).json({ message: 'Require name,password and otp' });
+router.post('/api/register', async (req, res) => {
+    const { name, phone, password } = req.body;
+    if (!name || !phone || !password) {
+        return res.status(400).json({ message: 'Name, phone, and password are required' });
     }
 
     try {
-        const existingOTP = await OTP.findOne({ phone, otp });
-        if (!existingOTP) {
-            return res.status(400).json({ message: 'Wrong OTP' });
+        const existingUser = await User.findOne({ phone });
+        if (existingUser) {
+            return res.status(400).json({ message: 'User already exists' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-
-        
         const user = new User({ name, phone, password: hashedPassword });
 
         await user.save();
-
-       
-        await OTP.deleteMany({ phone });
-
-        res.json({ message: 'User added' });
+        res.json({ message: 'User added successfully' });
     } catch (error) {
-        res.status(500).json({ message: 'User dont saved', error: error.message });
+        res.status(500).json({ message: 'User could not be saved', error: error.message });
     }
 });
 

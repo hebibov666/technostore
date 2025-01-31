@@ -2,10 +2,10 @@ import { signIn } from "next-auth/react"
 import { useState } from "react"
 import { useRouter } from 'next/router';
 import Link from "next/link";
-import Input from "../ui-components/Input";
-import Button from "../ui-components/Button";
+import Input from "@/ui-components/Input";
+import Button from "@/ui-components/Button";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import FormContainer from "../ui-components/FormContainer";
+import FormContainer from "@/ui-components/FormContainer";
 import { toast } from "react-hot-toast";
 
 function Login() {
@@ -48,7 +48,6 @@ function Login() {
           placeholder="Password"
         />
         {error && <p className="text-red-600">{error}</p>}
-        <span className="font-bold text-black">Demo User:<br></br> Username: İsmayıl <br></br> Password: user1234</span>
         <Button
           type="submit"
           text={`${loading ? "Please wait" : "Log in"}`}

@@ -17,9 +17,9 @@ Used
 Functions available in the project
 
 //Backend side functions
-*Registration (However, since the Twilio account is demo, otp will not be sent to the number and it will not be possible to open a new account)
-*User login (Demo name and password are registered on the login page for login)
-*Category and subcategory (Coming from the backend)
+*Registration
+*User login
+*Category and subcategory 
 *Filtering products according to the selected category
 *Products from the api
 *Adding products to and removing them from the cart
