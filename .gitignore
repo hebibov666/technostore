@@ -17,10 +17,7 @@
 /.next/
 /out/
 
-# pages
-pages/api/*
-!pages/api/auth/
-/pages/admin/
+
 
 # production
 /build
