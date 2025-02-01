@@ -36,7 +36,7 @@ export default function Profile({ setViewProfile }) {
                     <li className="text-black hover:bg-[#F6F7FA] p-[5px] rounded-[5px]">My orders</li>
                     <li className="text-black hover:bg-[#F6F7FA] p-[5px] rounded-[5px]">Payments</li>
                     <li className="text-black hover:bg-[#F6F7FA] p-[5px] rounded-[5px]">Update profile</li>
-                    <li onClick={()=>{signOut({callbackUrl:"/"})}} className="text-red-600 font-bold hover:bg-[#F6F7FA] p-[5px] rounded-[5px]">Log out</li>
+                    <li onClick={()=>{signOut({callbackUrl:"/",redirect:false})}} className="text-red-600 font-bold hover:bg-[#F6F7FA] p-[5px] rounded-[5px]">Log out</li>
                 </ul>
             </div>
         </div>
