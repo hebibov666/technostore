@@ -5,10 +5,7 @@ import { useRouter } from "next/router";
 export default function Profile({ setViewProfile }) {
     const { data: session } = useSession()
     const router=useRouter()
-    if (router.pathname === "/user/profile") {
-        // Belirli bir yol (URL) varsa, bileşeni render etmeyin
-        return null;
-      }
+   
     return (
         <div className="
              fixed

@@ -5,6 +5,7 @@ import { getCategories, openSidebar } from "@/redux/slice";
 import CloseIcon from '@mui/icons-material/Close';
 import { getProducts } from "@/redux/productSlice";
 import CircularProgress from '@mui/material/CircularProgress';
+import { motion } from "framer-motion";
 export default function Category() {
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const dispatch = useDispatch();
@@ -31,20 +32,26 @@ export default function Category() {
 
 
   return (
-    <div className={`
+    <motion.div
+    initial={{ x: -300, opacity: 0 }}
+      animate={{ x: sidebar ? 0 : -300, opacity: sidebar ? 1 : 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+    className={`
           fixed 
           z-[9999] 
           top-0 
           left-0 
-          h-[100vh]  
           bg-white 
-          h-auto 
-          min-h-[100vh] 
-          ${sidebar === true ? "flex flex-col items-start justify-start" : "hidden"} 
+          h-[100vh] 
+          flex flex-col items-start justify-start 
+          overflow-hidden
           gap-[5px]  
           w-full 
           lg:w-[30%]`}>
       <div className="
+          absolute
+          top-0 
+          left-0
           w-full 
           flex 
           justify-between 
@@ -72,6 +79,7 @@ export default function Category() {
           className="text-white" />
         </span>
       </div>
+      <div className="overflow-scroll w-full pt-[50px]">
       {loading &&
         <div className="flex w-full pt-[50px] items-center justify-center">
           <CircularProgress />
@@ -135,7 +143,7 @@ export default function Category() {
           </div>
         );
       })}
-
-    </div>
+</div>
+    </motion.div>
   );
 }

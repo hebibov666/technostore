@@ -25,7 +25,7 @@ const {data:session}=useSession()
       />
         </div>
         <div className='flex flex-col justify-center p-[20px] gap-[20px]'>
-          <h1 className="text-2xl font-bold text-black">{product.name}</h1>
+          <h1 className="text-2xl font-bold text-black bg-[#F6F7FA] p-[10px] rounded-[7px]">{product.name}</h1>
           <p className="mt-4 text-lg text-black">{product.description}</p>
           <p className="mt-2 text-xl font-semibold text-black">{product.price} $</p>
           <Button text="Add to cart" onClick={(e)=>{addToCart(e,product._id,1,session)}} />

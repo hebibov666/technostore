@@ -6,11 +6,11 @@ import { useState } from "react";
 import { addToCart } from "@/functions/basketfunctions";
 import { addFavorite } from "@/functions/addfavoritefunction";
 import CircularProgress from '@mui/material/CircularProgress';
+
 export default function Card({ product }) {
   const { data: session } = useSession();
   const [favoriteProducts, setFavoriteProducts] = useState(typeof window != 'undefined' ? JSON.parse(localStorage.getItem("favorites")) : [])
   const [adding, setAdding] = useState(false)
-
   return (
     <Link href={`/product/${product?._id}`}
       className="
@@ -47,15 +47,15 @@ export default function Card({ product }) {
         <img
           src={product?.file}
           alt={product?.name}
-          className="w-full h-full  rounded-[5px]"
+          className="w-auto h-full  rounded-[5px]"
         />
       </div>
       <div className="flex flex-col gap-[10px] p-[10px]">
-        <h1 className="text-lg font-semibold truncate text-black">
+        <h1 className={`text-lg font-semibold truncate text-black`}>
           {product?.name}
         </h1>
 
-        <span className="text-md font-medium text-black font-bold">{product?.price} $</span>
+        <span className="text-md text-black font-bold">{product?.price} $</span>
         <Button
           text={adding
             ?

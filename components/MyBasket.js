@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { openBasket } from "@/redux/slice";
 import Link from "next/link";
 import { totalPrice,getCartProducts,removeProduct } from "@/functions/basketfunctions";
+import { motion } from "framer-motion";
 export default function MyBasket() {
     const [cartsProducts, setCartsProducts] = useState([]);
     const [loading,setLoading]=useState(true)
@@ -26,7 +27,9 @@ export default function MyBasket() {
 
 
     return (
-      <div className={`overflow-hidden w-full h-[100vh] ${basket ? "flex justify-end" : "hidden"} fixed top-0 right-0 z-[999] bg-[#0a0a0a51]`}>
+      <motion.div  initial={{ x: 300, opacity: 0 }}
+      animate={{ x: basket ? 0 : 300, opacity: basket ? 1 : 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}  className={`overflow-hidden w-full h-[100vh] flex justify-end  fixed top-0 right-0 z-[999] bg-[#0a0a0a51]`}>
          <div className={`relative pb-[70px] w-full flex flex-col justify-start sm:w-[50%] md:w-[35%] lg:w-[30%] bg-white h-[100vh]`}>
         <div className="flex items-center h-[50px] p-[20px] justify-between w-full bg-white border-b-[2px] border-[#F6F7FA]">
             <h1 className="text-[#8A2BE2] font-bold text-[18px]">My basket</h1>
@@ -81,6 +84,6 @@ export default function MyBasket() {
         </div>
 
        </div>
-      </div>
+      </motion.div>
     );
 }

@@ -6,24 +6,30 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Link from 'next/link';
 import FormContainer from '@/ui-components/FormContainer';
 import { useRouter } from 'next/router';
+import { toast } from 'react-hot-toast';
 export default function Register() {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('')
     const router = useRouter()
     const [error,setError]=useState(null)
+    const [loading,setLoading]=useState(false)
     const register = async (e) => {
         e.preventDefault()
+        setLoading(true)
         try {
-            const response = await axios.post('https://technostore-1.onrender.com/api/register',
+            const response = await axios.post('http://localhost:3001/api/register',
              { name,
                phone,
                password });
-            console.log(response.data.message);
+               setLoading(false)
+               toast.success("Account created succesfully")
+               router.push("/user/login")
+              
         
         } catch (err) {
-            console.error('Error:', err.response?.data?.message);
             setError(err.response?.data?.message)
+            setLoading(false)
         }
     };
 
@@ -53,7 +59,7 @@ export default function Register() {
                     />
                     {error&& <p>{error}</p>}
                     <Button
-                        text="Register"
+                        text={loading ? "Please wait..." : "Register"}
                         type="submit"
                     />
                 </form>
